@@ -33,6 +33,9 @@ namespace belajar_layouting.Model
     partial void Insertuser(user instance);
     partial void Updateuser(user instance);
     partial void Deleteuser(user instance);
+    partial void Insertpeminjam(peminjam instance);
+    partial void Updatepeminjam(peminjam instance);
+    partial void Deletepeminjam(peminjam instance);
     #endregion
 		
 		public DataClassesDataContext() : 
@@ -70,6 +73,14 @@ namespace belajar_layouting.Model
 			get
 			{
 				return this.GetTable<user>();
+			}
+		}
+		
+		public System.Data.Linq.Table<peminjam> peminjams
+		{
+			get
+			{
+				return this.GetTable<peminjam>();
 			}
 		}
 	}
@@ -159,6 +170,164 @@ namespace belajar_layouting.Model
 					this._password = value;
 					this.SendPropertyChanged("password");
 					this.OnpasswordChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.peminjam")]
+	public partial class peminjam : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _nama;
+		
+		private string _email;
+		
+		private string _noTelp;
+		
+		private string _alamat;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnamaChanging(string value);
+    partial void OnnamaChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void OnnoTelpChanging(string value);
+    partial void OnnoTelpChanged();
+    partial void OnalamatChanging(string value);
+    partial void OnalamatChanged();
+    #endregion
+		
+		public peminjam()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nama", DbType="NChar(255)")]
+		public string nama
+		{
+			get
+			{
+				return this._nama;
+			}
+			set
+			{
+				if ((this._nama != value))
+				{
+					this.OnnamaChanging(value);
+					this.SendPropertyChanging();
+					this._nama = value;
+					this.SendPropertyChanged("nama");
+					this.OnnamaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="NChar(255)")]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
+					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_noTelp", DbType="NChar(255)")]
+		public string noTelp
+		{
+			get
+			{
+				return this._noTelp;
+			}
+			set
+			{
+				if ((this._noTelp != value))
+				{
+					this.OnnoTelpChanging(value);
+					this.SendPropertyChanging();
+					this._noTelp = value;
+					this.SendPropertyChanged("noTelp");
+					this.OnnoTelpChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alamat", DbType="NChar(255)")]
+		public string alamat
+		{
+			get
+			{
+				return this._alamat;
+			}
+			set
+			{
+				if ((this._alamat != value))
+				{
+					this.OnalamatChanging(value);
+					this.SendPropertyChanging();
+					this._alamat = value;
+					this.SendPropertyChanged("alamat");
+					this.OnalamatChanged();
 				}
 			}
 		}

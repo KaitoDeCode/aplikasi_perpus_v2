@@ -7,4 +7,13 @@
       <Column Name="password" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.peminjam" Member="peminjams">
+    <Type Name="peminjam">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nama" Type="System.String" DbType="NChar(255)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NChar(255)" CanBeNull="true" />
+      <Column Name="noTelp" Type="System.String" DbType="NChar(255)" CanBeNull="true" />
+      <Column Name="alamat" Type="System.String" DbType="NChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
