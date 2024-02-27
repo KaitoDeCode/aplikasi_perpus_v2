@@ -1,4 +1,5 @@
-﻿using belajar_layouting.Model;
+﻿using belajar_layouting.Controllers;
+using belajar_layouting.Model;
 using belajar_layouting.utils;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,13 @@ namespace belajar_layouting.screen
     {
         private DataClassesDataContext db;
         private Utilities utils;
+        private PeminjamController PeminjamController;
         public PeminjamForm()
         {
             InitializeComponent();
             this.db = new DataClassesDataContext();
             this.utils = new Utilities();
+            this.PeminjamController = new PeminjamController();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -52,23 +55,12 @@ namespace belajar_layouting.screen
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
-            {
-                peminjam newPeminjam = new peminjam
-                {
-                    nama = namaPeminjam.Text,
-                    email = emailPeminjam.Text,
-                    noTelp = nomorTelp.Text,
-                    alamat = alamatPeminjam.Text,
-                };
-                this.db.peminjams.InsertOnSubmit(newPeminjam);
-                this.db.SubmitChanges();
-                this.utils.message("success", "Data peminjam berhasil ditambahkan");
-            }
-            catch (Exception ex)
-            {
-                this.utils.message("error",ex.Message);
-            }
+            this.PeminjamController.store(
+                namaPeminjam.Text,
+                emailPeminjam.Text,
+                nomorTelp.Text,
+                alamatPeminjam.Text
+             );
         }
 
         private void button4_Click(object sender, EventArgs e)
