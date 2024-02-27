@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="testing" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=WIN-QQ6C7V0O4HI\SQLEXPRESS;Initial Catalog=testing;Integrated Security=True;Encrypt=False;Trust Server Certificate=True" SettingsObjectName="belajar_layouting.Properties.Settings" SettingsPropertyName="testingConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.users" Member="users">
+    <Type Name="user">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

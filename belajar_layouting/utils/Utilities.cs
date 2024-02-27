@@ -19,5 +19,25 @@ namespace belajar_layouting.utils
             form.Show();
         }
 
+        public void message(String status,String message)
+        {
+            if (status == "success")
+            {
+                MessageBox.Show(message,status,MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(message, status, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void clearText(params TextBox[] variabel)
+        {
+            foreach (TextBox data in variabel)
+            {
+                data.Text = "";
+            }
+        }
+
     }
 }

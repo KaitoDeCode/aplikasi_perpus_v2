@@ -1,7 +1,11 @@
-﻿using System;
+﻿
+using belajar_layouting.Model;
+using belajar_layouting.utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +16,12 @@ namespace belajar_layouting
 {
     public partial class Form1 : Form
     {
+        private DataClassesDataContext db;
+        private Utilities utils;
         public Form1()
         {
+            this.db = new DataClassesDataContext();
+            this.utils = new Utilities();
             InitializeComponent();
         }
 
@@ -49,9 +57,30 @@ namespace belajar_layouting
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DashboardForm dash = new DashboardForm();
-            dash.Show();
-            this.Hide();
+            try
+            {
+                    var test = this.db.users.FirstOrDefault(
+                        item =>
+                        item.username == Username.Text &&
+                        item.password == Password.Text
+                    );
+                    if (test is null)
+                    {
+                        this.utils.message("error", "Gagal Login");
+                        return;
+                    }
+                    else {
+                        this.utils.message("success","Berhasil Login");
+                    }
+                    DashboardForm dash = new DashboardForm();
+                    dash.Show();
+                    this.Hide();
+            }
+            catch(Exception err)
+            {
+                this.utils.message("error", err.Message);
+            }
+            
         }
 
         private void label3_Click(object sender, EventArgs e)
