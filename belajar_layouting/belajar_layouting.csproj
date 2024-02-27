@@ -60,6 +60,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\PeminjamController.cs" />
+    <Compile Include="Controllers\PenulisController.cs" />
     <Compile Include="DashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>

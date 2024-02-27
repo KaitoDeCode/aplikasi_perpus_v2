@@ -22,4 +22,11 @@
       <Column Name="nama" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.Penulis" Member="Penulis">
+    <Type Name="Penuli">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nama" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>
