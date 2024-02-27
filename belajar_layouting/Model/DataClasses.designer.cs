@@ -36,6 +36,9 @@ namespace belajar_layouting.Model
     partial void Insertpeminjam(peminjam instance);
     partial void Updatepeminjam(peminjam instance);
     partial void Deletepeminjam(peminjam instance);
+    partial void InsertKategori(Kategori instance);
+    partial void UpdateKategori(Kategori instance);
+    partial void DeleteKategori(Kategori instance);
     #endregion
 		
 		public DataClassesDataContext() : 
@@ -81,6 +84,14 @@ namespace belajar_layouting.Model
 			get
 			{
 				return this.GetTable<peminjam>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kategori> Kategoris
+		{
+			get
+			{
+				return this.GetTable<Kategori>();
 			}
 		}
 	}
@@ -328,6 +339,92 @@ namespace belajar_layouting.Model
 					this._alamat = value;
 					this.SendPropertyChanged("alamat");
 					this.OnalamatChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Kategori")]
+	public partial class Kategori : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _nama;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnamaChanging(string value);
+    partial void OnnamaChanged();
+    #endregion
+		
+		public Kategori()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nama", DbType="NChar(255) NOT NULL", CanBeNull=false)]
+		public string nama
+		{
+			get
+			{
+				return this._nama;
+			}
+			set
+			{
+				if ((this._nama != value))
+				{
+					this.OnnamaChanging(value);
+					this.SendPropertyChanging();
+					this._nama = value;
+					this.SendPropertyChanged("nama");
+					this.OnnamaChanged();
 				}
 			}
 		}

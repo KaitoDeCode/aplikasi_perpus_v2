@@ -43,5 +43,10 @@ namespace belajar_layouting.screen
 
             }
         }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

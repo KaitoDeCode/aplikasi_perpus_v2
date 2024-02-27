@@ -16,4 +16,10 @@
       <Column Name="alamat" Type="System.String" DbType="NChar(255)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Kategori" Member="Kategoris">
+    <Type Name="Kategori">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nama" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>
