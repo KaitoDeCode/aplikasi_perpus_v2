@@ -56,33 +56,35 @@
             this.erase = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.kategori = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.namaKategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.email_penulis = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailPenulis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.namaPenulis = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.email_penulis = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailPenulis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.namaKategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditKategoriBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.HapusKategoriBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -378,31 +380,21 @@
             this.tabPage3.Text = "Tambah Kategori";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
+            // dataGridView3
             // 
-            this.tabPage4.Controls.Add(this.email_penulis);
-            this.tabPage4.Controls.Add(this.label10);
-            this.tabPage4.Controls.Add(this.dataGridView4);
-            this.tabPage4.Controls.Add(this.button7);
-            this.tabPage4.Controls.Add(this.button8);
-            this.tabPage4.Controls.Add(this.namaPenulis);
-            this.tabPage4.Controls.Add(this.label8);
-            this.tabPage4.Controls.Add(this.label9);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(596, 428);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Tambah Penulis";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(596, 428);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "List Penulis";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.namaKategori,
+            this.EditKategoriBtn,
+            this.HapusKategoriBtn});
+            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dataGridView3.Location = new System.Drawing.Point(278, 0);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersVisible = false;
+            this.dataGridView3.Size = new System.Drawing.Size(318, 428);
+            this.dataGridView3.TabIndex = 46;
+            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
             // button5
             // 
@@ -458,21 +450,39 @@
             this.label13.Text = "Tambah Kategori";
             this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
-            // dataGridView3
+            // tabPage4
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.namaKategori});
-            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGridView3.Location = new System.Drawing.Point(278, 0);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(318, 428);
-            this.dataGridView3.TabIndex = 46;
+            this.tabPage4.Controls.Add(this.email_penulis);
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Controls.Add(this.dataGridView4);
+            this.tabPage4.Controls.Add(this.button7);
+            this.tabPage4.Controls.Add(this.button8);
+            this.tabPage4.Controls.Add(this.namaPenulis);
+            this.tabPage4.Controls.Add(this.label8);
+            this.tabPage4.Controls.Add(this.label9);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(596, 428);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Tambah Penulis";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // namaKategori
+            // email_penulis
             // 
-            this.namaKategori.HeaderText = "Nama";
-            this.namaKategori.Name = "namaKategori";
+            this.email_penulis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email_penulis.Location = new System.Drawing.Point(8, 179);
+            this.email_penulis.Name = "email_penulis";
+            this.email_penulis.Size = new System.Drawing.Size(212, 26);
+            this.email_penulis.TabIndex = 54;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(5, 163);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(69, 13);
+            this.label10.TabIndex = 53;
+            this.label10.Text = "Email Penulis";
             // 
             // dataGridView4
             // 
@@ -485,6 +495,16 @@
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.Size = new System.Drawing.Size(318, 428);
             this.dataGridView4.TabIndex = 52;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nama";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // emailPenulis
+            // 
+            this.emailPenulis.HeaderText = "Email";
+            this.emailPenulis.Name = "emailPenulis";
             // 
             // button7
             // 
@@ -539,32 +559,35 @@
             this.label9.TabIndex = 47;
             this.label9.Text = "Tambah Penulis";
             // 
-            // email_penulis
+            // tabPage5
             // 
-            this.email_penulis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.email_penulis.Location = new System.Drawing.Point(8, 179);
-            this.email_penulis.Name = "email_penulis";
-            this.email_penulis.Size = new System.Drawing.Size(212, 26);
-            this.email_penulis.TabIndex = 54;
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(596, 428);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "List Penulis";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // namaKategori
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 163);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(69, 13);
-            this.label10.TabIndex = 53;
-            this.label10.Text = "Email Penulis";
+            this.namaKategori.HeaderText = "Nama";
+            this.namaKategori.Name = "namaKategori";
             // 
-            // dataGridViewTextBoxColumn1
+            // EditKategoriBtn
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nama";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.EditKategoriBtn.HeaderText = "Edit";
+            this.EditKategoriBtn.Name = "EditKategoriBtn";
+            this.EditKategoriBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EditKategoriBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EditKategoriBtn.Text = "Edit";
             // 
-            // emailPenulis
+            // HapusKategoriBtn
             // 
-            this.emailPenulis.HeaderText = "Email";
-            this.emailPenulis.Name = "emailPenulis";
+            this.HapusKategoriBtn.HeaderText = "Hapus";
+            this.HapusKategoriBtn.Name = "HapusKategoriBtn";
+            this.HapusKategoriBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.HapusKategoriBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.HapusKategoriBtn.Text = "Hapus";
             // 
             // BukuForm
             // 
@@ -584,9 +607,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
 
@@ -630,7 +653,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn namaKategori;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
@@ -641,5 +663,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailPenulis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn namaKategori;
+        private System.Windows.Forms.DataGridViewButtonColumn EditKategoriBtn;
+        private System.Windows.Forms.DataGridViewButtonColumn HapusKategoriBtn;
     }
 }

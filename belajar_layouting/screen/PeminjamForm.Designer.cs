@@ -47,9 +47,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.namaPenyewa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailPenyewa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telpPeminjam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noTelp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.erase = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
@@ -68,6 +68,10 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(604, 454);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabStop = false;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabList_Selected);
+            this.tabControl1.Click += new System.EventHandler(this.tabControl_Click);
             // 
             // tabPage1
             // 
@@ -262,9 +266,9 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.namaPenyewa,
-            this.emailPenyewa,
-            this.telpPeminjam,
+            this.nama,
+            this.email,
+            this.noTelp,
             this.Edit,
             this.erase});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -278,23 +282,23 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // namaPenyewa
+            // nama
             // 
-            this.namaPenyewa.HeaderText = "Nama";
-            this.namaPenyewa.Name = "namaPenyewa";
-            this.namaPenyewa.ReadOnly = true;
+            this.nama.HeaderText = "Nama";
+            this.nama.Name = "nama";
+            this.nama.ReadOnly = true;
             // 
-            // emailPenyewa
+            // email
             // 
-            this.emailPenyewa.HeaderText = "Email";
-            this.emailPenyewa.Name = "emailPenyewa";
-            this.emailPenyewa.ReadOnly = true;
+            this.email.HeaderText = "Email";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
             // 
-            // telpPeminjam
+            // noTelp
             // 
-            this.telpPeminjam.HeaderText = "No Telp";
-            this.telpPeminjam.Name = "telpPeminjam";
-            this.telpPeminjam.ReadOnly = true;
+            this.noTelp.HeaderText = "No Telp";
+            this.noTelp.Name = "noTelp";
+            this.noTelp.ReadOnly = true;
             // 
             // Edit
             // 
@@ -303,12 +307,14 @@
             this.Edit.ReadOnly = true;
             this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Edit.Text = "Edit";
             // 
             // erase
             // 
             this.erase.HeaderText = "Hapus";
             this.erase.Name = "erase";
             this.erase.ReadOnly = true;
+            this.erase.Text = "Hapus";
             // 
             // PeminjamForm
             // 
@@ -320,6 +326,7 @@
             this.Name = "PeminjamForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Peminjam";
+            this.Load += new System.EventHandler(this.PeminjamForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -350,9 +357,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn namaPenyewa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailPenyewa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telpPeminjam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noTelp;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewButtonColumn erase;
     }

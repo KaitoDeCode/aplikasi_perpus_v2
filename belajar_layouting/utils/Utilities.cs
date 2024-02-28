@@ -1,4 +1,5 @@
-﻿using System;
+﻿using belajar_layouting.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,8 @@ namespace belajar_layouting.utils
                 data.Text = "";
             }
         }
+
+        
 
     }
 }

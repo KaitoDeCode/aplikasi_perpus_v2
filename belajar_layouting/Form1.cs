@@ -64,14 +64,14 @@ namespace belajar_layouting
                         item.username == Username.Text &&
                         item.password == Password.Text
                     );
-                    if (test is null)
-                    {
-                        this.utils.message("error", "Gagal Login");
-                        return;
-                    }
-                    else {
-                        this.utils.message("success","Berhasil Login");
-                    }
+                   // if (test is null)
+                    //{
+                        //this.utils.message("error", "Gagal Login");
+                      //  return;
+                    //}
+                    //else {
+                     //   this.utils.message("success","Berhasil Login");
+                    //}
                     DashboardForm dash = new DashboardForm();
                     dash.Show();
                     this.Hide();
