@@ -49,11 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.namaPenyewa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailPenyewa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telpPeminjam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.erase = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
@@ -79,6 +74,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.namaPenyewa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailPenyewa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telpPeminjam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editBuku = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.eraseBuku = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -322,8 +322,8 @@
             this.namaPenyewa,
             this.emailPenyewa,
             this.telpPeminjam,
-            this.Edit,
-            this.erase});
+            this.editBuku,
+            this.eraseBuku});
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
@@ -334,38 +334,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(590, 422);
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // namaPenyewa
-            // 
-            this.namaPenyewa.HeaderText = "Judul";
-            this.namaPenyewa.Name = "namaPenyewa";
-            this.namaPenyewa.ReadOnly = true;
-            // 
-            // emailPenyewa
-            // 
-            this.emailPenyewa.HeaderText = "Kode Buku";
-            this.emailPenyewa.Name = "emailPenyewa";
-            this.emailPenyewa.ReadOnly = true;
-            // 
-            // telpPeminjam
-            // 
-            this.telpPeminjam.HeaderText = "Penulis";
-            this.telpPeminjam.Name = "telpPeminjam";
-            this.telpPeminjam.ReadOnly = true;
-            // 
-            // Edit
-            // 
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // erase
-            // 
-            this.erase.HeaderText = "Hapus";
-            this.erase.Name = "erase";
-            this.erase.ReadOnly = true;
             // 
             // dataGridView1
             // 
@@ -625,6 +593,38 @@
             this.tabPage5.Text = "List Penulis";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // namaPenyewa
+            // 
+            this.namaPenyewa.HeaderText = "Judul";
+            this.namaPenyewa.Name = "namaPenyewa";
+            this.namaPenyewa.ReadOnly = true;
+            // 
+            // emailPenyewa
+            // 
+            this.emailPenyewa.HeaderText = "Kode Buku";
+            this.emailPenyewa.Name = "emailPenyewa";
+            this.emailPenyewa.ReadOnly = true;
+            // 
+            // telpPeminjam
+            // 
+            this.telpPeminjam.HeaderText = "Penulis";
+            this.telpPeminjam.Name = "telpPeminjam";
+            this.telpPeminjam.ReadOnly = true;
+            // 
+            // editBuku
+            // 
+            this.editBuku.HeaderText = "Edit";
+            this.editBuku.Name = "editBuku";
+            this.editBuku.ReadOnly = true;
+            this.editBuku.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.editBuku.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // eraseBuku
+            // 
+            this.eraseBuku.HeaderText = "Hapus";
+            this.eraseBuku.Name = "eraseBuku";
+            this.eraseBuku.ReadOnly = true;
+            // 
             // BukuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -673,11 +673,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn namaPenyewa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailPenyewa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telpPeminjam;
-        private System.Windows.Forms.DataGridViewButtonColumn Edit;
-        private System.Windows.Forms.DataGridViewButtonColumn erase;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
@@ -704,5 +699,10 @@
         private System.Windows.Forms.DataGridViewButtonColumn hapusBtn;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn namaPenyewa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailPenyewa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telpPeminjam;
+        private System.Windows.Forms.DataGridViewButtonColumn editBuku;
+        private System.Windows.Forms.DataGridViewButtonColumn eraseBuku;
     }
 }

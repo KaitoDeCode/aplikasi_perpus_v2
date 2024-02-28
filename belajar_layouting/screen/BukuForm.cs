@@ -111,8 +111,8 @@ namespace belajar_layouting.screen
                 getDataBuku();
             }
             catch (Exception err)
-            {MessageBox.Show(err.Message);
-
+            {
+                this.utils.message("success",err.Message);
             }
         }
 
@@ -256,6 +256,37 @@ namespace belajar_layouting.screen
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string name = dataGridView2.Columns[e.ColumnIndex].Name;
+            var id = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+            if (name == "editBuku")
+            {
+                var buku = this.db.Bukus.FirstOrDefault(item => item.Id == int.Parse(id.ToString()));
+
+                if (buku is null)
+                {
+                    this.utils.message("success", "Gagal menemukan buku");
+                }
+
+                judulBuku.Text = buku.judul;
+                kodeBuku.Text = buku.kode_buku;
+                comboBox1.SelectedValue = buku.kategori_id;
+                comboBox2.SelectedValue = buku.penulis_id;
+                this.idSelected = int.Parse(id.ToString());
+                tabControl1.SelectTab("tabPage1");
+            }
+            if (name == "eraseBuku")
+            {
+                var delete = this.db.Bukus.FirstOrDefault(i => i.Id == int.Parse(id.ToString()));
+
+                if (delete is null)
+                {
+                    this.utils.message("error", "Gagal menghapus peminjam");
+                }
+                this.db.Bukus.DeleteOnSubmit(delete);
+                this.db.SubmitChanges();
+                this.utils.message("success", "Berhasil menghapus peminjam");
+                getDataBuku();
+            }
 
         }
     }
