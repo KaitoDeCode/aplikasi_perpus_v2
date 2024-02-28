@@ -15,6 +15,11 @@ namespace belajar_layouting.Controllers
             this.kategori = db.Kategoris;
         }
 
+        public List<Kategori> getAll()
+        {
+            return this.kategori.ToList();
+        }
+
         public void store(String nama)
         {
             try

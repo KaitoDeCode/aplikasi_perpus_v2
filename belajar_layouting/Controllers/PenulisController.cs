@@ -15,6 +15,11 @@ namespace belajar_layouting.Controllers
             this.penulis = db.Penulis;
         }
 
+        public List<Penuli> getAll()
+        {
+            return this.penulis.ToList();
+        }
+
         public void store(String nama,String email)
         {
             try
