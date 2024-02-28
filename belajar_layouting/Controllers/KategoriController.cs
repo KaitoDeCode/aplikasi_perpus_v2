@@ -36,6 +36,26 @@ namespace belajar_layouting.Controllers
             }
         }
 
+        public void update(int id, String nama)
+        {
+            try
+            {
+                var data = this.db.Kategoris.FirstOrDefault(item => item.id == id);
+                if (data is null)
+                {
+                    this.utils.message("error", "Kategori tidak ditemukan");
+                }
+
+                data.nama = nama;
+                this.db.SubmitChanges();
+                this.utils.message("success", "Berhasil memperbarui data");
+
+            }catch (Exception ex)
+            {
+                this.utils.message("error", ex.Message);
+            }
+        }
+
 
     }
 }

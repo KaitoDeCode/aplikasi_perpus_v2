@@ -57,6 +57,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.namaKategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditKategoriBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.HapusKategoriBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.kategori = new System.Windows.Forms.TextBox();
@@ -66,17 +69,16 @@
             this.email_penulis = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailPenulis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.namaPenulis = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.namaKategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditKategoriBtn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.HapusKategoriBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailPenulis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.hapusBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -396,6 +398,27 @@
             this.dataGridView3.TabIndex = 46;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
+            // namaKategori
+            // 
+            this.namaKategori.HeaderText = "Nama";
+            this.namaKategori.Name = "namaKategori";
+            // 
+            // EditKategoriBtn
+            // 
+            this.EditKategoriBtn.HeaderText = "Edit";
+            this.EditKategoriBtn.Name = "EditKategoriBtn";
+            this.EditKategoriBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EditKategoriBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EditKategoriBtn.Text = "Edit";
+            // 
+            // HapusKategoriBtn
+            // 
+            this.HapusKategoriBtn.HeaderText = "Hapus";
+            this.HapusKategoriBtn.Name = "HapusKategoriBtn";
+            this.HapusKategoriBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.HapusKategoriBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.HapusKategoriBtn.Text = "Hapus";
+            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Red;
@@ -486,25 +509,22 @@
             // 
             // dataGridView4
             // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
-            this.emailPenulis});
+            this.emailPenulis,
+            this.editBtn,
+            this.hapusBtn});
             this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Right;
             this.dataGridView4.Location = new System.Drawing.Point(278, 0);
             this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.RowHeadersVisible = false;
             this.dataGridView4.Size = new System.Drawing.Size(318, 428);
             this.dataGridView4.TabIndex = 52;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nama";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // emailPenulis
-            // 
-            this.emailPenulis.HeaderText = "Email";
-            this.emailPenulis.Name = "emailPenulis";
+            this.dataGridView4.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentClick);
             // 
             // button7
             // 
@@ -568,26 +588,29 @@
             this.tabPage5.Text = "List Penulis";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // namaKategori
+            // dataGridViewTextBoxColumn1
             // 
-            this.namaKategori.HeaderText = "Nama";
-            this.namaKategori.Name = "namaKategori";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nama";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // EditKategoriBtn
+            // emailPenulis
             // 
-            this.EditKategoriBtn.HeaderText = "Edit";
-            this.EditKategoriBtn.Name = "EditKategoriBtn";
-            this.EditKategoriBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EditKategoriBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EditKategoriBtn.Text = "Edit";
+            this.emailPenulis.HeaderText = "Email";
+            this.emailPenulis.Name = "emailPenulis";
             // 
-            // HapusKategoriBtn
+            // editBtn
             // 
-            this.HapusKategoriBtn.HeaderText = "Hapus";
-            this.HapusKategoriBtn.Name = "HapusKategoriBtn";
-            this.HapusKategoriBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.HapusKategoriBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.HapusKategoriBtn.Text = "Hapus";
+            this.editBtn.HeaderText = "Edit";
+            this.editBtn.Name = "editBtn";
+            this.editBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.editBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // hapusBtn
+            // 
+            this.hapusBtn.HeaderText = "Hapus";
+            this.hapusBtn.Name = "hapusBtn";
+            this.hapusBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.hapusBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // BukuForm
             // 
@@ -661,10 +684,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox email_penulis;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailPenulis;
         private System.Windows.Forms.DataGridViewTextBoxColumn namaKategori;
         private System.Windows.Forms.DataGridViewButtonColumn EditKategoriBtn;
         private System.Windows.Forms.DataGridViewButtonColumn HapusKategoriBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailPenulis;
+        private System.Windows.Forms.DataGridViewButtonColumn editBtn;
+        private System.Windows.Forms.DataGridViewButtonColumn hapusBtn;
     }
 }

@@ -40,7 +40,10 @@ namespace belajar_layouting.utils
             }
         }
 
-        
+        public DialogResult konfirmasi(String message)
+        {
+           return MessageBox.Show(message,"Konfirmasi",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+        }
 
     }
 }
