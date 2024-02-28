@@ -1,9 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="testing" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=WIN-QQ6C7V0O4HI\SQLEXPRESS;Initial Catalog=testing;Integrated Security=True;Encrypt=False;Trust Server Certificate=True" SettingsObjectName="belajar_layouting.Properties.Settings" SettingsPropertyName="testingConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Buku" Member="Bukus">
+    <Type Name="Buku">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="judul" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="kode_buku" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="kategori_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="penulis_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Kategori_Buku" Member="Kategori" ThisKey="kategori_id" OtherKey="id" Type="Kategori" IsForeignKey="true" />
+      <Association Name="Penuli_Buku" Member="Penuli" ThisKey="penulis_id" OtherKey="id" Type="Penuli" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Kategori" Member="Kategoris">
     <Type Name="Kategori">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nama" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Kategori_Buku" Member="Bukus" ThisKey="id" OtherKey="kategori_id" Type="Buku" />
     </Type>
   </Table>
   <Table Name="dbo.peminjam" Member="peminjams">
@@ -20,6 +32,7 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nama" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="email" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Penuli_Buku" Member="Bukus" ThisKey="id" OtherKey="penulis_id" Type="Buku" />
     </Type>
   </Table>
   <Table Name="dbo.users" Member="users">

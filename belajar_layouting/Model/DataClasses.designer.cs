@@ -30,6 +30,9 @@ namespace belajar_layouting.Model
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertBuku(Buku instance);
+    partial void UpdateBuku(Buku instance);
+    partial void DeleteBuku(Buku instance);
     partial void InsertKategori(Kategori instance);
     partial void UpdateKategori(Kategori instance);
     partial void DeleteKategori(Kategori instance);
@@ -74,6 +77,14 @@ namespace belajar_layouting.Model
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Buku> Bukus
+		{
+			get
+			{
+				return this.GetTable<Buku>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Kategori> Kategoris
 		{
 			get
@@ -107,6 +118,246 @@ namespace belajar_layouting.Model
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Buku")]
+	public partial class Buku : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _judul;
+		
+		private string _kode_buku;
+		
+		private int _kategori_id;
+		
+		private int _penulis_id;
+		
+		private EntityRef<Kategori> _Kategori;
+		
+		private EntityRef<Penuli> _Penuli;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnjudulChanging(string value);
+    partial void OnjudulChanged();
+    partial void Onkode_bukuChanging(string value);
+    partial void Onkode_bukuChanged();
+    partial void Onkategori_idChanging(int value);
+    partial void Onkategori_idChanged();
+    partial void Onpenulis_idChanging(int value);
+    partial void Onpenulis_idChanged();
+    #endregion
+		
+		public Buku()
+		{
+			this._Kategori = default(EntityRef<Kategori>);
+			this._Penuli = default(EntityRef<Penuli>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_judul", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string judul
+		{
+			get
+			{
+				return this._judul;
+			}
+			set
+			{
+				if ((this._judul != value))
+				{
+					this.OnjudulChanging(value);
+					this.SendPropertyChanging();
+					this._judul = value;
+					this.SendPropertyChanged("judul");
+					this.OnjudulChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kode_buku", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string kode_buku
+		{
+			get
+			{
+				return this._kode_buku;
+			}
+			set
+			{
+				if ((this._kode_buku != value))
+				{
+					this.Onkode_bukuChanging(value);
+					this.SendPropertyChanging();
+					this._kode_buku = value;
+					this.SendPropertyChanged("kode_buku");
+					this.Onkode_bukuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kategori_id", DbType="Int NOT NULL")]
+		public int kategori_id
+		{
+			get
+			{
+				return this._kategori_id;
+			}
+			set
+			{
+				if ((this._kategori_id != value))
+				{
+					if (this._Kategori.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onkategori_idChanging(value);
+					this.SendPropertyChanging();
+					this._kategori_id = value;
+					this.SendPropertyChanged("kategori_id");
+					this.Onkategori_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_penulis_id", DbType="Int NOT NULL")]
+		public int penulis_id
+		{
+			get
+			{
+				return this._penulis_id;
+			}
+			set
+			{
+				if ((this._penulis_id != value))
+				{
+					if (this._Penuli.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onpenulis_idChanging(value);
+					this.SendPropertyChanging();
+					this._penulis_id = value;
+					this.SendPropertyChanged("penulis_id");
+					this.Onpenulis_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Kategori_Buku", Storage="_Kategori", ThisKey="kategori_id", OtherKey="id", IsForeignKey=true)]
+		public Kategori Kategori
+		{
+			get
+			{
+				return this._Kategori.Entity;
+			}
+			set
+			{
+				Kategori previousValue = this._Kategori.Entity;
+				if (((previousValue != value) 
+							|| (this._Kategori.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Kategori.Entity = null;
+						previousValue.Bukus.Remove(this);
+					}
+					this._Kategori.Entity = value;
+					if ((value != null))
+					{
+						value.Bukus.Add(this);
+						this._kategori_id = value.id;
+					}
+					else
+					{
+						this._kategori_id = default(int);
+					}
+					this.SendPropertyChanged("Kategori");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Penuli_Buku", Storage="_Penuli", ThisKey="penulis_id", OtherKey="id", IsForeignKey=true)]
+		public Penuli Penuli
+		{
+			get
+			{
+				return this._Penuli.Entity;
+			}
+			set
+			{
+				Penuli previousValue = this._Penuli.Entity;
+				if (((previousValue != value) 
+							|| (this._Penuli.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Penuli.Entity = null;
+						previousValue.Bukus.Remove(this);
+					}
+					this._Penuli.Entity = value;
+					if ((value != null))
+					{
+						value.Bukus.Add(this);
+						this._penulis_id = value.id;
+					}
+					else
+					{
+						this._penulis_id = default(int);
+					}
+					this.SendPropertyChanged("Penuli");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Kategori")]
 	public partial class Kategori : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -116,6 +367,8 @@ namespace belajar_layouting.Model
 		private int _id;
 		
 		private string _nama;
+		
+		private EntitySet<Buku> _Bukus;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -129,6 +382,7 @@ namespace belajar_layouting.Model
 		
 		public Kategori()
 		{
+			this._Bukus = new EntitySet<Buku>(new Action<Buku>(this.attach_Bukus), new Action<Buku>(this.detach_Bukus));
 			OnCreated();
 		}
 		
@@ -172,6 +426,19 @@ namespace belajar_layouting.Model
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Kategori_Buku", Storage="_Bukus", ThisKey="id", OtherKey="kategori_id")]
+		public EntitySet<Buku> Bukus
+		{
+			get
+			{
+				return this._Bukus;
+			}
+			set
+			{
+				this._Bukus.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -190,6 +457,18 @@ namespace belajar_layouting.Model
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Bukus(Buku entity)
+		{
+			this.SendPropertyChanging();
+			entity.Kategori = this;
+		}
+		
+		private void detach_Bukus(Buku entity)
+		{
+			this.SendPropertyChanging();
+			entity.Kategori = null;
 		}
 	}
 	
@@ -363,6 +642,8 @@ namespace belajar_layouting.Model
 		
 		private string _email;
 		
+		private EntitySet<Buku> _Bukus;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -377,6 +658,7 @@ namespace belajar_layouting.Model
 		
 		public Penuli()
 		{
+			this._Bukus = new EntitySet<Buku>(new Action<Buku>(this.attach_Bukus), new Action<Buku>(this.detach_Bukus));
 			OnCreated();
 		}
 		
@@ -440,6 +722,19 @@ namespace belajar_layouting.Model
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Penuli_Buku", Storage="_Bukus", ThisKey="id", OtherKey="penulis_id")]
+		public EntitySet<Buku> Bukus
+		{
+			get
+			{
+				return this._Bukus;
+			}
+			set
+			{
+				this._Bukus.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -458,6 +753,18 @@ namespace belajar_layouting.Model
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Bukus(Buku entity)
+		{
+			this.SendPropertyChanging();
+			entity.Penuli = this;
+		}
+		
+		private void detach_Bukus(Buku entity)
+		{
+			this.SendPropertyChanging();
+			entity.Penuli = null;
 		}
 	}
 	

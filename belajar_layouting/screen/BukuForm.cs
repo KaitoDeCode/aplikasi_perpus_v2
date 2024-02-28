@@ -20,6 +20,7 @@ namespace belajar_layouting.screen
         private PenulisController penulisController;
         private Utilities utils;
         private DataClassesDataContext db;
+        private BookController bookController;
         private int idSelected;
         public BukuForm()
         {
@@ -28,9 +29,11 @@ namespace belajar_layouting.screen
             this.penulisController = new PenulisController();
             this.utils = new Utilities();
             this.db = new DataClassesDataContext();
-            this.idSelected = 0; 
+            this.idSelected = 0;
+            this.bookController = new BookController();
             getData();
             getDataPenulis();
+            getDataBuku();
         }
 
         private void getData()
@@ -41,7 +44,13 @@ namespace belajar_layouting.screen
             foreach (var item in list)
             {
                 dataGridView3.Rows.Add(item.nama, item.id, item.id);
+                //comboBox1.Items.Add(item.nama);
             }
+            comboBox1.Controls.Clear();
+            comboBox1.DataSource = null;
+            comboBox1.DataSource = list;
+            comboBox1.DisplayMember = "nama";
+            comboBox1.ValueMember = "id";
         }
 
         private void getDataPenulis()
@@ -53,6 +62,24 @@ namespace belajar_layouting.screen
             {
                 dataGridView4.Rows.Add(item.nama,item.email, item.id, item.id);
             }
+            comboBox2.Controls.Clear();
+            comboBox2.DataSource = null;
+            comboBox2.DataSource = list;
+            comboBox2.DisplayMember = "nama";
+            comboBox2.ValueMember = "id";
+        }
+
+        private void getDataBuku()
+        {
+            dataGridView2.Rows.Clear();
+            dataGridView2.Refresh();
+            List<Buku> list = this.bookController.getAll();
+            foreach (var item in list)
+            {
+                dataGridView2.Rows.Add(item.judul, item.kode_buku, item.Penuli.nama, item.Id, item.Id);
+                //comboBox1.Items.Add(item.nama);
+            }
+          
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -75,6 +102,13 @@ namespace belajar_layouting.screen
             //testingEntities db = new testingEntities();
             try
             {
+                this.bookController.store(
+                    judulBuku.Text,
+                    int.Parse(kodeBuku.Text),
+                    int.Parse(comboBox1.SelectedValue.ToString()),
+                    int.Parse(comboBox2.SelectedValue.ToString())
+                  );
+                getDataBuku();
             }
             catch (Exception err)
             {MessageBox.Show(err.Message);
@@ -119,6 +153,7 @@ namespace belajar_layouting.screen
                 this.penulisController.store(namaPenulis.Text,email_penulis.Text);
                 getDataPenulis();
             }
+            this.utils.clearText(email_penulis, namaPenulis);
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -148,10 +183,10 @@ namespace belajar_layouting.screen
                 DialogResult result = MessageBox.Show("Apakah anda yakin ingin menghapus data?", "Sukses", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                this.db.Kategoris.DeleteOnSubmit(data);
-                this.db.SubmitChanges();
-                this.utils.message("success", "Berhasil menghapus kategori");
-                getData();
+                    this.db.Kategoris.DeleteOnSubmit(data);
+                    this.db.SubmitChanges();
+                    this.utils.message("success", "Berhasil menghapus kategori");
+                    getData();
                 }
 
             }
@@ -191,6 +226,36 @@ namespace belajar_layouting.screen
 
             }
 
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //this.utils.message("success",comboBox1.SelectedItem.ToString());
+            //this.utils.message("success", comboBox1.SelectedValue.ToString());
+            //this.utils.message("success", comboBox1.SelectedText.ToString());
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+            private void button1_Click(object sender, EventArgs e)
+            {
+                richTextBox2.Text = "\n" +
+                    "Buku Baru \n" +
+                    "Judul: "+judulBuku.Text+ "\n" +
+                    "Kode Buku: "+kodeBuku.Text+ "\n" +
+                    "Kategori:" +comboBox1 +"\n" +
+                    "Penulis: "+comboBox2.SelectedText.ToString() + "\n" +
+                    "Tanggal Rilis: "+dateTimePicker2.Value.ToString(); 
+                    
+            }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
