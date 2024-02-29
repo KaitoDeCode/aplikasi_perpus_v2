@@ -99,8 +99,7 @@ namespace belajar_layouting.screen
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //testingEntities db = new testingEntities();
-            try
+            if (this.idSelected == 0)
             {
                 this.bookController.store(
                     judulBuku.Text,
@@ -110,12 +109,20 @@ namespace belajar_layouting.screen
                   );
                 getDataBuku();
             }
-            catch (Exception err)
+            else
             {
-                this.utils.message("success",err.Message);
+                this.bookController.update(
+                    this.idSelected,
+                    judulBuku.Text,
+                    kodeBuku.Text,
+                    int.Parse(comboBox1.SelectedValue.ToString()),
+                    int.Parse(comboBox2.SelectedValue.ToString())
+                );
+                getDataBuku();
+                this.idSelected = 0;
             }
         }
-
+          
         private void label13_Click(object sender, EventArgs e)
         {
 
@@ -260,17 +267,16 @@ namespace belajar_layouting.screen
             var id = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
             if (name == "editBuku")
             {
+                this.utils.message("success",comboBox1.SelectedValue.ToString());
+                this.utils.message("success", comboBox2.SelectedValue.ToString());
                 var buku = this.db.Bukus.FirstOrDefault(item => item.Id == int.Parse(id.ToString()));
-
-                if (buku is null)
-                {
-                    this.utils.message("success", "Gagal menemukan buku");
-                }
-
+            
                 judulBuku.Text = buku.judul;
                 kodeBuku.Text = buku.kode_buku;
                 comboBox1.SelectedValue = buku.kategori_id;
                 comboBox2.SelectedValue = buku.penulis_id;
+
+
                 this.idSelected = int.Parse(id.ToString());
                 tabControl1.SelectTab("tabPage1");
             }

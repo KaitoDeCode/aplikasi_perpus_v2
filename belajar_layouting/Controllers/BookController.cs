@@ -34,17 +34,20 @@ namespace belajar_layouting.Controllers
             }
         }
 
-        public void update(int id, String judul, int kode, int kategoriId, int penulisId)
+        public void update(int id, string judul, string kode, int kategoriId, int penulisId)
         {
             try
             {
                 var data = db.Bukus.FirstOrDefault(item => item.Id == id);
-                if (data != null)
+
+                if (data is null)
                 {
                     utils.message("error", "Buku tidak ditemukan");
+                    return;
                 }
+
                 data.judul = judul;
-                data.kode_buku = kode.ToString();
+                data.kode_buku = kode;
                 data.kategori_id = kategoriId;
                 data.penulis_id = penulisId;
                 db.SubmitChanges();
